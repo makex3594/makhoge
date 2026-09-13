@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>かんたん AI相談室</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-normal">
+
+    <!-- ヘッダー -->
+    <header class="site-header">
+        <div class="header-container">
+            <h1>🌸 かんたん AI相談室</h1>
+            
+            <!-- 文字サイズ変更ボタン -->
+            <div class="font-size-selector">
+                <span>文字の大きさ：</span>
+                <button type="button" onclick="changeFontSize('font-normal')" class="btn-size">標準</button>
+                <button type="button" onclick="changeFontSize('font-large')" class="btn-size active">大</button>
+                <button type="button" onclick="changeFontSize('font-xlarge')" class="btn-size">特大</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+
+        <!-- APIキー設定エリア -->
+        <section class="card api-section">
+            <details>
+                <summary>🔑 はじめに：APIキーの設定（ここを押してください）</summary>
+                <div class="api-input-group">
+                    <label for="apiKey">Gemini APIキー：</label>
+                    <input type="password" id="apiKey" placeholder="APIキーをここに入力" />
+                    <button type="button" id="saveKeyBtn" class="btn-secondary">保存する</button>
+                </div>
+                <p class="hint">※キーはお手元のパソコン内（ブラウザ）にのみ安全に保存されます。</p>
+            </details>
+        </section>
+
+        <!-- かんたん質問ボタン -->
+        <section class="card">
+            <h2>💡 ボタンを押して相談する</h2>
+            <div class="quick-buttons">
+                <button type="button" class="quick-btn" onclick="setQuickQuestion('孫へのプレゼントで喜ばれるものを教えてください')">
+                    🎁 孫へのプレゼント
+                </button>
+                <button type="button" class="quick-btn" onclick="setQuickQuestion('今日からできる簡単な健康習慣を教えて')">
+                    🥬 今日の健康相談
+                </button>
+                <button type="button" class="quick-btn" onclick="setQuickQuestion('スマホの写真の送り方をわかりやすく教えて')">
+                    📱 スマホの使い方
+                </button>
+                <button type="button" class="quick-btn" onclick="setQuickQuestion('今日のお昼ごはんのおすすめ献立を教えて')">
+                    🍱 今日の献立
+                </button>
+            </div>
+        </section>
+
+        <!-- 相談入力フォーム -->
+        <section class="card">
+            <h2>✏️ 自由に文字を入力して相談する</h2>
+            <form id="chatForm">
+                <textarea id="userInput" rows="4" placeholder="ここに質問や話したいことを書きます（例：最近よく眠れないのですが、どうしたらいいですか？）"></textarea>
+                
+                <div class="button-group">
+                    <button type="button" id="clearBtn" class="btn-clear">消去する</button>
+                    <button type="submit" id="submitBtn" class="btn-submit">
+                        🗣️ AIに相談・送信する
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- 相談結果・やり取りの表示エリア -->
+        <section class="card display-section">
+            <h2>💬 相談のへんじ</h2>
+            
+            <div id="loading" class="loading-box hidden">
+                <div class="spinner"></div>
+                <p>AIが考え中です。少々お待ちください...</p>
+            </div>
+
+            <div id="chatHistory" class="chat-history">
+                <p class="placeholder-text">ここにお返事が表示されます。</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>© かんたん AI相談室 - いつでもお気軽にご相談ください</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
