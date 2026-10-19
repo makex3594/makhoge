@@ -149,7 +149,7 @@ async function callGeminiAPI(apiKey, userPrompt) {
     // 高齢者の方に優しく、わかりやすく答えるようシステム指示を付与
     const systemInstruction = "あなたは高齢者の親切で温かい相談員です。難しい専門用語やカタカナ語はなるべく避け、丁寧で優しい日本語で、短く分かりやすく答えてください。";
     
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
     const requestBody = {
         contents: [
